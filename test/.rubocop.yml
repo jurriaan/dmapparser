@@ -1,0 +1,3 @@
+# Do not introduce global variables.
+GlobalVars:
+  Enabled: false
