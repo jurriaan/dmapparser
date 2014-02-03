@@ -1,6 +1,6 @@
 # DMAPParser
 
-[![Gem Version](https://badge.fury.io/rb/dmapparser.png)](http://badge.fury.io/rb/dmapparser) [![Dependency Status](https://gemnasium.com/jurriaan/dmapparser.png)](https://gemnasium.com/jurriaan/dmapparser)
+[![Gem Version](https://badge.fury.io/rb/dmapparser.png)](http://badge.fury.io/rb/dmapparser) [![Dependency Status](https://gemnasium.com/jurriaan/dmapparser.png)](https://gemnasium.com/jurriaan/dmapparser) [![Coverage Status](https://coveralls.io/repos/jurriaan/dmapparser/badge.png)](https://coveralls.io/r/jurriaan/dmapparser) [![Build Status](https://travis-ci.org/jurriaan/docparser.png?branch=master)](https://travis-ci.org/jurriaan/dmapparser)
 
 Parses DMAP data.
 
