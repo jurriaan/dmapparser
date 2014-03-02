@@ -12,7 +12,7 @@ module DMAPParser
     def to_dmap
       value = convert_value(self.value)
       length = [value.length].pack('N')
-      (type.tag.to_s + length + value).force_encoding('utf-8')
+      (type.tag.to_s + length + value).force_encoding(Encoding::BINARY)
     end
 
     private

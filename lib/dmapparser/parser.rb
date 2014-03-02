@@ -14,7 +14,7 @@ module DMAPParser
     def initialize(response)
       @response = response
       @response = StringIO.new(response) unless @response.is_a? IO
-      @response.set_encoding(Encoding::UTF_8) # Use unicode
+      @response.set_encoding(Encoding::BINARY) # Use unicode
     end
 
     def parse

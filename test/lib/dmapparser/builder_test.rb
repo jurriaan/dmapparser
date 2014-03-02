@@ -3,7 +3,7 @@ require_relative '../../test_helper'
 describe DMAPParser::Builder do
   before do
     @pair_data = DMAPParser::Builder.cmpa do
-      cmpg 'AABBCCDDEE'
+      cmpg '4E0573EF9BB80682'
       cmnm 'Name'
       cmty 'iPod'
     end
@@ -18,7 +18,7 @@ describe DMAPParser::Builder do
   it 'should raise an exception if tags are put inside non-containers' do
     lambda do
       DMAPParser::Builder.cmnm do
-        cmpg 'AABBCCDDEE'
+        cmpg '4E0573EF9BB80682'
         cmty 'iPod'
       end
     end.must_raise RuntimeError
@@ -29,7 +29,7 @@ describe DMAPParser::Builder do
   end
 
   it 'should store the correct values' do
-    @pair_data.cmpg.must_equal 'AABBCCDDEE'
+    @pair_data.cmpg.must_equal '4E0573EF9BB80682'
     @pair_data.cmnm.must_equal 'Name'
     @pair_data.cmty.must_equal 'iPod'
   end
@@ -66,5 +66,19 @@ describe DMAPParser::Builder do
     end
     dmap = nested.to_dmap
     DMAPParser::Parser.parse(dmap).to_dmap.must_equal(dmap)
+  end
+
+  it 'should correctly encode hexadecimal strings' do
+    dmap = DMAPParser::Builder.cmpa do
+      cmpg '4E0573EF9BB80682'
+    end.to_dmap
+    byte_string = [78, 5, 115, 239, 155, 184, 6, 130]
+    dmap.bytes[-8..-1].must_equal(byte_string)
+    dmap_reparsed = DMAPParser::Parser.parse(dmap).to_dmap
+    dmap_reparsed.bytes[-8..-1].must_equal(byte_string)
+  end
+
+  it 'should output binary strings' do
+    @pair_data.to_dmap.encoding.must_equal(Encoding::BINARY)
   end
 end

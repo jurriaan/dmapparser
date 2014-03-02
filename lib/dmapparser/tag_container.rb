@@ -13,7 +13,6 @@ module DMAPParser
 
     def get_value(key)
       return value[key] if key.is_a? Fixnum
-
       tag = get_tag(key)
 
       if tag.type.container?

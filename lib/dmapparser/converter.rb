@@ -87,9 +87,12 @@ module DMAPParser
       end
 
       def bin_to_string(data)
-        data.force_encoding('utf-8')
+        data.force_encoding(Encoding::UTF_8)
       end
-      alias_method :string_to_bin, :bin_to_string
+
+      def string_to_bin(data)
+        data.force_encoding(Encoding::BINARY)
+      end
 
       alias_method :uint16_to_bin, :short_to_bin
       alias_method :uint32_to_bin, :int_to_bin

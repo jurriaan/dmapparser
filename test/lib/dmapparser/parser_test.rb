@@ -20,6 +20,7 @@ describe DMAPParser::Parser do
 
   it 'should ignore padding' do
     dmap = support_file('simple.dmap').read
+    dmap.force_encoding(Encoding::BINARY)
     padded = DMAPParser::Parser.parse(dmap + 'I AM PADDING!!11!!')
     padded.to_dmap.must_equal dmap
   end
@@ -58,4 +59,10 @@ describe DMAPParser::Parser do
     data.jurp.must_equal 0x1337
   end
 
+  it 'should parse strings as UTF-8' do
+    dmap = DMAPParser::Builder.cmpa do
+      cmnm '4E0573EF9BB80682'
+    end.to_dmap
+    DMAPParser::Parser.parse(dmap).cmnm.encoding.must_equal(Encoding::UTF_8)
+  end
 end
