@@ -4,5 +4,5 @@ require 'dmapparser'
 if ARGV.size > 0
   puts DMAPParser::Parser.parse(ARGF.to_io).inspect
 else
-  puts "Usage: #$PROGRAM_NAME filename"
+  puts "Usage: #{$PROGRAM_NAME} filename"
 end
