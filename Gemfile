@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 gemspec
 
 group :test do
-  gem 'minitest', '~> 5.2.2'
+  gem 'minitest', '~> 5.3.1'
   gem 'coveralls', require: false
-  gem 'rubocop', '~> 0.18.0'
+  gem 'rubocop', '~> 0.19.1'
   gem 'simplecov', require: false
 end

@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = DMAPParser::VERSION
   spec.authors       = ['Jurriaan Pruis']
   spec.email         = ['email@jurriaanpruis.nl']
-  spec.summary       = %q{Parses DMAP data}
+  spec.summary       = %q(Parses DMAP data)
   spec.homepage      = 'https://github.com/jurriaan/dmapparser'
   spec.license       = 'MIT'
   spec.platform      = Gem::Platform::RUBY

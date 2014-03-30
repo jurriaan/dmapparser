@@ -31,7 +31,7 @@ module DMAPParser
       end
 
       def bin_to_hex(data)
-        data.bytes.reduce('') { |a, e| a + sprintf('%02X', e) }
+        data.bytes.reduce('') { |a, e| a + format('%02X', e) }
       end
 
       def bin_to_date(data)
