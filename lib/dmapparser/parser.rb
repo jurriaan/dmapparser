@@ -14,14 +14,13 @@ module DMAPParser
     def initialize(response)
       @response = response
       @response = StringIO.new(response) unless @response.is_a? IO
-      @response.set_encoding(Encoding::BINARY) # Use unicode
+      @response.set_encoding(Encoding::BINARY)
     end
 
     def parse
       return nil if @response.nil? || @response.size == 0
       fail ParseError if @response.size < 8
-      ret = TagContainer.new
-      ret.type = TagDefinition[read_key]
+      ret = TagContainer.new(read_key)
       fail ParseError if ret.type && !ret.type.container?
       ret.value = parse_container(read_length)
       ret

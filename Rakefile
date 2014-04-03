@@ -16,7 +16,7 @@ task :rubocop do
   puts "Running Rubocop #{Rubocop::Version::STRING}"
   args = FileList['**/*.rb', 'Rakefile', 'dmapparser.gemspec', 'Gemfile']
   cli = Rubocop::CLI.new
-  fail unless cli.run(['-a'] + args) == 0
+  cli.run(args)
 end
 
 task default: :test

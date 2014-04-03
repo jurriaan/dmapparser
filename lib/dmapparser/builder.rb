@@ -16,7 +16,7 @@ module DMAPParser
       tag = TagDefinition[method]
       return super if tag.nil?
 
-      if block_given?
+      if block_given? || tag.container?
         fail "Tag #{tag} is not a container type" unless tag.container?
         build_container(tag, &block)
       else
@@ -35,7 +35,7 @@ module DMAPParser
       end
     end
 
-    def build_container(tag , &block)
+    def build_container(tag, &block)
       @dmap_stack << TagContainer.new(tag)
       instance_exec(&block)
       if @dmap_stack.length > 1

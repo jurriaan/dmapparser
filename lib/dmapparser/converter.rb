@@ -3,7 +3,7 @@ module DMAPParser
   class Converter
     class << self
       def date_to_bin(data)
-        int_to_bin(value.to_i)
+        int_to_bin(data.to_i)
       end
 
       def bin_to_byte(data)
@@ -11,7 +11,7 @@ module DMAPParser
       end
 
       def bin_to_long(data)
-        (bin_to_int(data[0..3]) << 32) + bin_to_int(data[4..7])
+        (bin_to_int(data[0..3]) << 32) | bin_to_int(data[4..7])
       end
 
       def bin_to_int(data)
@@ -51,7 +51,7 @@ module DMAPParser
       end
 
       def long_to_bin(data)
-        [data >> 32, data & 0xfffffff].pack 'NN'
+        [data >> 32, data & 0xFFFFFFFF].pack 'NN'
       end
 
       def short_to_bin(data)
@@ -59,7 +59,7 @@ module DMAPParser
       end
 
       def version_to_bin(data)
-        data.split('.').pack 'nCC'
+        data.split('.').map { |part| part.to_i }.pack 'nCC'
       end
 
       def hex_to_bin(data)
@@ -108,7 +108,6 @@ module DMAPParser
         if respond_to? decode_method
           send(decode_method, data)
         else
-          warn "Decoder: Unknown type #{type}"
           decode_unknown(data)
         end
       end
@@ -118,8 +117,7 @@ module DMAPParser
         if respond_to? encode_method
           send(encode_method, data)
         else
-          warn "Encoder: Unknown type #{type}"
-          data
+          data # This only works for strings..
         end
       end
     end

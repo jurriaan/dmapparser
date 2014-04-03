@@ -1,8 +1,8 @@
 module DMAPParser
   # The TagContainer class is a Tag which contains other Tags
   class TagContainer < Tag
-    def initialize(type = nil, value = [])
-      super type, value
+    def initialize(type, value = [])
+      super
     end
 
     def inspect(level = 0)
@@ -14,12 +14,8 @@ module DMAPParser
     def get_value(key)
       return value[key] if key.is_a? Fixnum
       tag = get_tag(key)
-
-      if tag.type.container?
-        tag
-      elsif !tag.nil?
-        tag.value
-      end
+      return unless tag
+      tag.type.container? ? tag : tag.value
     end
 
     def get_tag(key)
@@ -39,7 +35,7 @@ module DMAPParser
       elsif has?(method)
         get_value(method)
       else
-        super
+        nil
       end
     end
 
