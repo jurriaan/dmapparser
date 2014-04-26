@@ -6,6 +6,6 @@ gemspec
 group :test do
   gem 'minitest', '~> 5.3.1'
   gem 'coveralls', require: false
-  gem 'rubocop', '~> 0.20.0'
+  gem 'rubocop', '~> 0.21.0'
   gem 'simplecov', require: false
 end
