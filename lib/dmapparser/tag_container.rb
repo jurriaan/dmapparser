@@ -29,7 +29,7 @@ module DMAPParser
       !get_tag(key).nil?
     end
 
-    def method_missing(method, *arguments, &block)
+    def method_missing(method, *_arguments, &_block)
       if method =~ /(.*)\?$/
         has?(Regexp.last_match[1])
       elsif has?(method)

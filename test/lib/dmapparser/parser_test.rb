@@ -4,7 +4,7 @@ describe DMAPParser::Parser do
   it 'should raise a ParserError when given invalid data' do
     invalid = []
     20.times do
-      invalid << (0..255).map { |c| c.chr }.join # random data
+      invalid << (0..255).map(&:chr).join # random data
     end
     invalid << "rand\x00\x00\x00\x01" # non correct size
     invalid << "mcon\x00\x00\x00\x05rand\x09" # wrong tag size
@@ -18,7 +18,7 @@ describe DMAPParser::Parser do
   end
 
   it 'should return nil if the string is empty' do
-    DMAPParser::Parser.parse('').must_equal nil
+    -> { DMAPParser::Parser.parse('') }.must_raise DMAPParser::Parser::ParseError
   end
 
   it 'should ignore padding' do

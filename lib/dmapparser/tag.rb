@@ -4,7 +4,7 @@ module DMAPParser
     def initialize(type, value)
       unless type.is_a? TagDefinition
         type = TagDefinition[type] ||
-              TagDefinition.new(type, :unknown, "unknown (#{length})")
+               TagDefinition.new(type, :unknown, "unknown (#{length})")
       end
       super
     end

@@ -18,8 +18,7 @@ module DMAPParser
     end
 
     def parse
-      return nil if @response.nil? || @response.size == 0
-      fail ParseError if @response.size < 8
+      fail ParseError if @response.nil? || @response.size < 8
       ret = TagContainer.new(read_key)
       fail ParseError if ret.type && !ret.type.container?
       ret.value = parse_container(read_length)
@@ -37,9 +36,7 @@ module DMAPParser
     end
 
     def read_bytes(length)
-      unless bytes_available?(length)
-        fail ParseError, 'Not enough data available'
-      end
+      fail ParseError, 'Not enough data available' unless bytes_available?(length)
       @response.read(length)
     end
 

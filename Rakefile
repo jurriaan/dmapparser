@@ -13,9 +13,9 @@ end
 task test: :rubocop
 
 task :rubocop do
-  puts "Running Rubocop #{Rubocop::Version::STRING}"
+  puts "Running RuboCop #{RuboCop::Version::STRING}"
   args = FileList['**/*.rb', 'Rakefile', 'dmapparser.gemspec', 'Gemfile']
-  cli = Rubocop::CLI.new
+  cli = RuboCop::CLI.new
   cli.run(args)
 end
 

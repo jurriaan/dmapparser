@@ -59,7 +59,7 @@ module DMAPParser
       end
 
       def version_to_bin(data)
-        data.split('.').map { |part| part.to_i }.pack 'nCC'
+        data.split('.').map(&:to_i).pack 'nCC'
       end
 
       def hex_to_bin(data)

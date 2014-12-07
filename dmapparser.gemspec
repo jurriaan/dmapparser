@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = DMAPParser::VERSION
   spec.authors       = ['Jurriaan Pruis']
   spec.email         = ['email@jurriaanpruis.nl']
-  spec.summary       = %q(Parses DMAP data)
+  spec.summary       = 'Parses DMAP data'
   spec.homepage      = 'https://github.com/jurriaan/dmapparser'
   spec.license       = 'MIT'
   spec.platform      = Gem::Platform::RUBY
@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.extra_rdoc_files = ['README.md', 'LICENSE']
 
-  spec.add_development_dependency 'bundler', '~> 1.5'
+  spec.add_development_dependency 'bundler', '~> 1.6'
   spec.add_development_dependency 'yard'
   spec.add_development_dependency 'rake'
 
